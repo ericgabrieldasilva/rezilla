@@ -1,0 +1,205 @@
+/* ----------- RESET ------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --primary-color: #3a0ca3;
+
+  --color-1: 67, 97, 238;
+  --color-2: #4cc9f0;
+  --color-3: #7209b7;
+  --color-4: #f72585;
+
+  --text-color-1: #0b090a;
+  --text-color-2: #2b2b2b;
+  --text-color-3: #808080;
+  --text-color-4: #aaaaaa;
+  --text-color-5: #d4d4d4;
+}
+
+/* ----------- BASE ------------------ */
+button {
+  background: none;
+  cursor: pointer;
+}
+/* ----------- LAYOUT ------------------ */
+.container {
+  max-width: 128rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+/* ----------- HEADER ------------------ */
+header {
+  padding: 2rem 0;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-desktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.menu,
+.header-buttons {
+  display: none;
+}
+
+.menu ul {
+  display: flex;
+  gap: 2.6rem;
+}
+
+.menu a {
+  position: relative;
+  font-size: 1.6rem;
+  color: var(--text-color-2);
+}
+
+.menu a:not(.selected)::before{
+  content: "";
+  position: absolute;
+  bottom: -0.8rem;
+  height: 2px;
+  width: 0%;
+  background-color: var(--primary-color);
+}
+
+.menu a:not(.selected):hover::before{
+  width: 100%;
+  transition: 500ms ease;
+}
+
+a.selected {
+  background-color: rgba(var(--color-1), 0.3);
+  padding: 1.3rem 1.6rem;
+  border-radius: 3rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.logo span {
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color-1);
+}
+
+.header-buttons button {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-color-2);
+  font-size: 1.6rem;
+  padding: 1.5rem 2.6rem;
+}
+
+.header-buttons button:nth-of-type(2) {
+  background-color: var(--primary-color);
+  border-radius: 3rem;
+  color: #fff;
+}
+
+.menu-mobile {
+  position: absolute;
+  right: 0;
+  top: -5rem;
+  background-color: var(--primary-color);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: none;
+}
+
+.show-menu-mobile {
+  display: block;
+  animation: showMenuMobile 0.25s ease forwards;
+}
+
+.menu-mobile ul {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding-top: 6.4rem;
+}
+
+.menu-mobile li {
+  padding: 1.6rem;
+}
+
+.menu-mobile a {
+  font-size: 2rem;
+  color: var(--text-color-5);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 1.6rem;
+}
+
+#btn-open-menu,
+#btn-close-menu {
+  cursor: pointer;
+}
+
+#btn-close-menu {
+  position: absolute;
+  z-index: 999;
+  top: 3rem;
+  right: 3rem;
+}
+
+/* ----------- ANIMATIONS ------------------ */
+@keyframes showMenuMobile {
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* ----------- RESPONSIVE ------------------ */
+@media screen and (min-width: 976px) {
+  .menu-mobile,
+  #btn-open-menu {
+    display: none;
+  }
+
+  .menu,
+  .header-buttons {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .menu-mobile {
+    width: 40rem;
+  }
+}
