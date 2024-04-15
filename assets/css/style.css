@@ -12,6 +12,8 @@
 :root {
   font-size: 62.5%;
 
+  --adress-height: 4rem;
+
   --primary-color: #3a0ca3;
 
   --color-1: 67, 97, 238;
@@ -38,9 +40,44 @@ button {
   padding: 0 3rem;
 }
 
+/* ----------- ADRESS ------------------ */
+.adress {
+  background-color: var(--primary-color);
+  display: none;
+}
+
+.adress .container {
+  display: flex;
+  height: var(--adress-height);
+  justify-content: space-between;
+}
+
+.adress p {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  color: var(--text-color-5);
+}
+
+.adress span {
+  display: flex;
+  gap: 3rem;
+}
+
 /* ----------- HEADER ------------------ */
 header {
   padding: 2rem 0;
+  width: 100%;
+}
+
+.fixed-header{
+  position: fixed;
+  top: 0;
+}
+
+.fixed-header + .adress{
+  padding-top: 8rem;
 }
 
 header .container {
@@ -72,7 +109,7 @@ header .container {
   color: var(--text-color-2);
 }
 
-.menu a:not(.selected)::before{
+.menu a:not(.selected)::before {
   content: "";
   position: absolute;
   bottom: -0.8rem;
@@ -81,7 +118,7 @@ header .container {
   background-color: var(--primary-color);
 }
 
-.menu a:not(.selected):hover::before{
+.menu a:not(.selected):hover::before {
   width: 100%;
   transition: 500ms ease;
 }
@@ -187,6 +224,10 @@ a.selected {
 
 /* ----------- RESPONSIVE ------------------ */
 @media screen and (min-width: 976px) {
+  .adress{
+    display: block;
+  }
+
   .menu-mobile,
   #btn-open-menu {
     display: none;
